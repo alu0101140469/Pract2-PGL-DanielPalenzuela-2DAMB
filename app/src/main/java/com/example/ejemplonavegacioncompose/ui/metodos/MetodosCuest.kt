@@ -83,11 +83,11 @@ class MetodosCuest {
         @Composable
         fun ButtonConFuncion(
             texto: String,
-            funcion: () -> Unit,
+            func: () -> Unit,
             colorFondo: Color = Color.Blue,
-            colorTexto: Color = Color.Black,
+            colorTexto: Color = Color.Blue,
             icono: ImageVector? = null) {
-            OutlinedButton(onClick = funcion,
+            OutlinedButton(onClick = func,
                 border = BorderStroke(1.dp, colorFondo),
                 shape = RoundedCornerShape(50),
                 colors = ButtonDefaults.outlinedButtonColors(contentColor = colorTexto)
@@ -106,15 +106,15 @@ class MetodosCuest {
 
         @Composable
         fun BotonesNavegacion(
-            funcionAnterior: () -> Unit,
-            funcionAleatoria: () -> Unit,
-            funcionSiguiente: () -> Unit
+            funAnterior: () -> Unit,
+            funAleatoria: () -> Unit,
+            funSiguiente: () -> Unit
         ) {
             Row(modifier = Modifier.fillMaxSize(),
                 horizontalArrangement = Arrangement.SpaceEvenly) {
-                ButtonConFuncion("Anterior", funcionAnterior, icono = Icons.Default.ArrowBack)
-                ButtonConFuncion("Aleatorio", funcionAleatoria)
-                ButtonConFuncion("Siguiente", funcionSiguiente, icono = Icons.Default.ArrowForward)
+                ButtonConFuncion("Anterior", funAnterior, icono = Icons.Default.ArrowBack)
+                ButtonConFuncion("Aleatorio", funAleatoria)
+                ButtonConFuncion("Siguiente", funSiguiente, icono = Icons.Default.ArrowForward)
             }
         }
     }

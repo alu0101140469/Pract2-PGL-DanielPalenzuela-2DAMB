@@ -54,7 +54,7 @@ fun MostrarPregunta(navController: NavHostController?) {
             horizontalAlignment = Alignment.CenterHorizontally,
             modifier = Modifier.fillMaxSize()) {
 
-        ButtonConFuncion(texto = "Inicio", funcion = {
+        ButtonConFuncion(texto = "Inicio", func = {
             navController?.navigate(Rutas.PantallaHome.ruta)
         })
 
@@ -68,27 +68,29 @@ fun MostrarPregunta(navController: NavHostController?) {
             Row(modifier = Modifier.fillMaxSize(),
                 horizontalArrangement = Arrangement.SpaceEvenly) {
 
-                ButtonConFuncion(texto = "True", funcion = {
+                ButtonConFuncion(texto = "True", func = {
                     textoSolucion = MetodosCuest.getTextoSolucion(Preguntas.listaPreguntas[indicePreg].solucion, true)
                     Respuestas.Respuestas[indicePreg] = -1
-                }, Color.Green, Color.Green)
 
-                ButtonConFuncion(texto = "False", funcion = {
+                })
+
+                ButtonConFuncion(texto = "False", func = {
                     textoSolucion = MetodosCuest.getTextoSolucion(Preguntas.listaPreguntas[indicePreg].solucion, false)
                     Respuestas.Respuestas[indicePreg] = -1
-                }, Color.Red, Color.Red)
+
+                })
             }
 
-            BotonesNavegacion(funcionAnterior = {
+            BotonesNavegacion(funAnterior = {
                 if(indicePreg > 0) {
                     indicePreg--
                 } else {
                     indicePreg = Preguntas.listaPreguntas.size - 1
                 }
-            }, funcionAleatoria = {
+            }, funAleatoria = {
 
             },
-                funcionSiguiente = {
+                funSiguiente = {
                     if(indicePreg < Preguntas.listaPreguntas.size - 1) {
                         indicePreg++
                     } else {
