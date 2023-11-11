@@ -1,10 +1,12 @@
 package com.example.ejemplonavegacioncompose.ui
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -24,6 +26,9 @@ import com.example.ejemplonavegacioncompose.ui.metodos.MetodosCuest.Companion.ge
 import com.example.ejemplonavegacioncompose.ui.objetos.Preguntas
 import com.example.ejemplonavegacioncompose.ui.objetos.Respuestas
 import com.example.ejemplonavegacioncompose.ui.rutas.Rutas
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.unit.dp
+import com.example.ejemplonavegacioncompose.ui.objetos.Imagenes
 
 @Composable
 fun PantallaCuest(navController: NavHostController?) {
@@ -60,6 +65,8 @@ fun MostrarPregunta(navController: NavHostController?) {
         mutableStateOf("")
     }
 
+    val imagenActual = Imagenes.listaImagenes[indicePreg % Imagenes.listaImagenes.size]
+
     LaunchedEffect(indicePreg) {
         val preguntaActual = Preguntas.listaPreguntas[indicePreg]
         textoSolucion = ""
@@ -79,8 +86,11 @@ fun MostrarPregunta(navController: NavHostController?) {
         })
 
         Text(text = textoPregunta)
-        
-        //Image(painter = painterResource(id = R.drawable.), contentDescription = "")
+
+        Image(painter = painterResource(id = imagenActual.id), contentDescription = "",
+            Modifier
+                .fillMaxWidth()
+                .height(200.dp))
 
         Text(
             text = textoSolucion,

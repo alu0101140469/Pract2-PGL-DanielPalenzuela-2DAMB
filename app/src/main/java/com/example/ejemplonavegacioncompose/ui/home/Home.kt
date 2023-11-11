@@ -1,9 +1,14 @@
 package com.example.ejemplonavegacioncompose.ui.home
 
+import android.R.attr.shape
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.material.icons.Icons
@@ -18,9 +23,12 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
+import com.example.ejemplonavegacioncompose.R
 import com.example.ejemplonavegacioncompose.ui.rutas.Rutas
+
 
 @Composable
 fun PantallaHome(navController : NavHostController?){
@@ -31,20 +39,34 @@ fun PantallaHome(navController : NavHostController?){
 fun MostrarHome(navController: NavHostController?){
     Column(verticalArrangement = Arrangement.Top,
         horizontalAlignment = Alignment.CenterHorizontally,
-        modifier = Modifier.padding(16.dp)) {
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(16.dp)) {
 
-        var texto by rememberSaveable { mutableStateOf("") }
+        var texto by rememberSaveable {
+            mutableStateOf("")
+        }
 
         Text("Bienvenido al cuestionario de preguntas de Daniel!")
-        //CuadroTexto(texto, {texto = it}) // Final:  ¿Por qué se hace esto?
 
-        //Image(painter = painterResource(id = R.drawable.), contentDescription = "")
+        Box(
+            modifier = Modifier
+                .weight(1f)
+                .fillMaxSize()
+        ) {
+            Image(
+                painter = painterResource(id = R.drawable.fotoinicio), contentDescription = "",
+                Modifier
+                    .fillMaxSize()
+            )
+        }
 
         Button(onClick = {
             navController?.navigate(Rutas.PantallaCuest.ruta)},
             Modifier
-                .fillMaxSize()
+                .fillMaxWidth()
                 .wrapContentSize(Alignment.Center)
+                .padding(16.dp)
         ) {
             Row(verticalAlignment = Alignment.CenterVertically)
             {

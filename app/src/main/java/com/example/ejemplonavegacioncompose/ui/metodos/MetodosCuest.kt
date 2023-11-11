@@ -18,6 +18,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.unit.dp
+import com.example.ejemplonavegacioncompose.R
+import com.example.ejemplonavegacioncompose.ui.objetos.Imagen
 import com.example.ejemplonavegacioncompose.ui.objetos.Pregunta
 
 
@@ -43,17 +45,17 @@ class MetodosCuest {
             return Solucion == opcionSeleccionada
         }
 
-//        fun llenarListaImagenes(): MutableList<Imagen> {
-//            val imagenes = mutableListOf<Imagen>()
-//
-//            imagenes.add(Imagen(R.drawable.), 10)
-//            imagenes.add(Imagen(R.drawable.), 10)
-//            imagenes.add(Imagen(R.drawable.), 10)
-//            imagenes.add(Imagen(R.drawable.), 10)
-//            imagenes.add(Imagen(R.drawable.), 10)
-//
-//            return imagenes
-//        }
+        fun llenarListaImagenes(): MutableList<Imagen> {
+            val imagenes = mutableListOf<Imagen>()
+
+            imagenes.add(Imagen(R.drawable.aguacate))
+            imagenes.add(Imagen(R.drawable.tomate))
+            imagenes.add(Imagen(R.drawable.pepino))
+            imagenes.add(Imagen(R.drawable.pimiento))
+            imagenes.add(Imagen(R.drawable.calabaza))
+
+            return imagenes
+        }
 
         fun llenarListaPreg(): ArrayList<Pregunta> {
             val listaPreguntas = ArrayList<Pregunta>()
