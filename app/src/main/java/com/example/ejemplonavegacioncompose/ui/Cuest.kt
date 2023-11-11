@@ -76,7 +76,12 @@ fun MostrarPregunta(navController: NavHostController?) {
 
         Text(
             text = textoSolucion,
-            color = if (colorBotonTrue == Color.Green) colorBotonTrue else colorBotonFalse
+            //color = if (colorBotonTrue == Color.Green) colorBotonTrue else colorBotonFalse
+            color = when {
+                colorBotonTrue == Color.Green -> colorBotonTrue
+                colorBotonFalse == Color.Red -> colorBotonFalse
+                else -> Color.Gray
+            }
         )
 
         Column {
@@ -87,12 +92,14 @@ fun MostrarPregunta(navController: NavHostController?) {
                 ButtonConFuncion(texto = "True", func = {
                     textoSolucion = MetodosCuest.getTextoSolucion(Preguntas.listaPreguntas[indicePreg].solucion, true)
                     colorBotonTrue = MetodosCuest.getColorSolucion(Preguntas.listaPreguntas[indicePreg].solucion, true)
+                    colorBotonFalse = MetodosCuest.getColorSolucion(Preguntas.listaPreguntas[indicePreg].solucion, false)
                     Respuestas.Respuestas[indicePreg] = -1
                 }, colorFondo = colorBotonTrue, colorTexto = colorBotonTrue)
 
                 ButtonConFuncion(texto = "False", func = {
                     textoSolucion = MetodosCuest.getTextoSolucion(Preguntas.listaPreguntas[indicePreg].solucion, false)
                     colorBotonFalse = MetodosCuest.getColorSolucion(Preguntas.listaPreguntas[indicePreg].solucion, false)
+                    colorBotonTrue = MetodosCuest.getColorSolucion(Preguntas.listaPreguntas[indicePreg].solucion, true)
                     Respuestas.Respuestas[indicePreg] = -1
                 }, colorFondo = colorBotonFalse, colorTexto = colorBotonFalse)
             }
