@@ -4,6 +4,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -43,14 +44,6 @@ fun MostrarPregunta(navController: NavHostController?) {
         mutableStateOf("")
     }
 
-    LaunchedEffect(indicePreg) {
-        val preguntaActual = Preguntas.listaPreguntas[indicePreg]
-        textoSolucion = ""
-        preguntaActual?.let {
-            textoPregunta = it.textoPregunta
-        }
-    }
-
     var colorBotonFalse by remember {
         mutableStateOf(Color.Gray)
     }
@@ -59,27 +52,37 @@ fun MostrarPregunta(navController: NavHostController?) {
         mutableStateOf(Color.Gray)
     }
 
+    LaunchedEffect(indicePreg) {
+        val preguntaActual = Preguntas.listaPreguntas[indicePreg]
+        textoSolucion = ""
+        preguntaActual?.let {
+            textoPregunta = it.textoPregunta
+        }
+        colorBotonFalse = Color.Gray
+        colorBotonTrue = Color.Gray
+    }
+
     Column(verticalArrangement = Arrangement.SpaceBetween,
             horizontalAlignment = Alignment.CenterHorizontally,
             modifier = Modifier.fillMaxSize()) {
 
-        ButtonConFuncion(texto = "Inicio", func = {
+        ButtonConFuncion(texto = "Home", func = {
             navController?.navigate(Rutas.PantallaHome.ruta)
         })
 
         Text(text = textoPregunta)
         
         //Image(painter = painterResource(id = R.drawable.), contentDescription = "")
-        
-        //Text(text = textoSolucion)
+
         Text(
             text = textoSolucion,
             color = if (colorBotonTrue == Color.Green) colorBotonTrue else colorBotonFalse
         )
 
         Column {
-            Row(modifier = Modifier.fillMaxSize(),
-                horizontalArrangement = Arrangement.SpaceEvenly) {
+            Row(modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.SpaceEvenly,
+                verticalAlignment = Alignment.CenterVertically) {
 
                 ButtonConFuncion(texto = "True", func = {
                     textoSolucion = MetodosCuest.getTextoSolucion(Preguntas.listaPreguntas[indicePreg].solucion, true)

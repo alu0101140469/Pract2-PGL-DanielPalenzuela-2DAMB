@@ -59,23 +59,23 @@ class MetodosCuest {
             val listaPreguntas = ArrayList<Pregunta>()
 
             val preg1 = Pregunta().apply {
-                textoPregunta = "¿El aguacate es una fruta?"
+                textoPregunta = "1. ¿El aguacate es una fruta?"
                 solucion = true
             }
             val preg2 = Pregunta().apply {
-                textoPregunta = "¿El tomate es una verdura?"
+                textoPregunta = "2. ¿El tomate es una verdura?"
                 solucion = false
             }
             val preg3 = Pregunta().apply {
-                textoPregunta = "¿El pepino es una verdura?"
+                textoPregunta = "3. ¿El pepino es una verdura?"
                 solucion = false
             }
             val preg4 = Pregunta().apply {
-                textoPregunta = "¿El pimiento es una fruta?"
+                textoPregunta = "4. ¿El pimiento es una fruta?"
                 solucion = true
             }
             val preg5 = Pregunta().apply {
-                textoPregunta = "¿La calabaza es una verdura?"
+                textoPregunta = "5. ¿La calabaza es una verdura?"
                 solucion = false
             }
 
@@ -120,9 +120,9 @@ class MetodosCuest {
         ) {
             Row(modifier = Modifier.fillMaxSize(),
                 horizontalArrangement = Arrangement.SpaceEvenly) {
-                ButtonConFuncion("Anterior", funAnterior, icono = Icons.Default.ArrowBack)
-                ButtonConFuncion("Aleatorio", funAleatoria)
-                ButtonConFuncion("Siguiente", funSiguiente, icono = Icons.Default.ArrowForward)
+                ButtonConFuncion("Previous", funAnterior, icono = Icons.Default.ArrowBack)
+                ButtonConFuncion("Random", funAleatoria)
+                ButtonConFuncion("Next", funSiguiente, icono = Icons.Default.ArrowForward)
             }
         }
     }
