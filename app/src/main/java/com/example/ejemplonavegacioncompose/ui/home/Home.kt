@@ -38,6 +38,8 @@ fun MostrarHome(navController: NavHostController?){
         Text("Bienvenido al cuestionario de preguntas de Daniel!")
         //CuadroTexto(texto, {texto = it}) // Final:  ¿Por qué se hace esto?
 
+        //Image(painter = painterResource(id = R.drawable.), contentDescription = "")
+
         Button(onClick = {
             navController?.navigate(Rutas.PantallaCuest.ruta)},
             Modifier
