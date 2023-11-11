@@ -19,6 +19,7 @@ import androidx.navigation.NavHostController
 import com.example.ejemplonavegacioncompose.ui.metodos.MetodosCuest
 import com.example.ejemplonavegacioncompose.ui.metodos.MetodosCuest.Companion.BotonesNavegacion
 import com.example.ejemplonavegacioncompose.ui.metodos.MetodosCuest.Companion.ButtonConFuncion
+import com.example.ejemplonavegacioncompose.ui.metodos.MetodosCuest.Companion.getTextoSolucion
 import com.example.ejemplonavegacioncompose.ui.objetos.Preguntas
 import com.example.ejemplonavegacioncompose.ui.objetos.Respuestas
 import com.example.ejemplonavegacioncompose.ui.rutas.Rutas
@@ -50,6 +51,14 @@ fun MostrarPregunta(navController: NavHostController?) {
         }
     }
 
+    var colorBotonFalse by remember {
+        mutableStateOf(Color.Gray)
+    }
+
+    var colorBotonTrue by remember {
+        mutableStateOf(Color.Gray)
+    }
+
     Column(verticalArrangement = Arrangement.SpaceBetween,
             horizontalAlignment = Alignment.CenterHorizontally,
             modifier = Modifier.fillMaxSize()) {
@@ -62,7 +71,11 @@ fun MostrarPregunta(navController: NavHostController?) {
         
         //Image(painter = painterResource(id = R.drawable.), contentDescription = "")
         
-        Text(text = textoSolucion)
+        //Text(text = textoSolucion)
+        Text(
+            text = textoSolucion,
+            color = if (colorBotonTrue == Color.Green) colorBotonTrue else colorBotonFalse
+        )
 
         Column {
             Row(modifier = Modifier.fillMaxSize(),
@@ -70,15 +83,15 @@ fun MostrarPregunta(navController: NavHostController?) {
 
                 ButtonConFuncion(texto = "True", func = {
                     textoSolucion = MetodosCuest.getTextoSolucion(Preguntas.listaPreguntas[indicePreg].solucion, true)
+                    colorBotonTrue = MetodosCuest.getColorSolucion(Preguntas.listaPreguntas[indicePreg].solucion, true)
                     Respuestas.Respuestas[indicePreg] = -1
-
-                })
+                }, colorFondo = colorBotonTrue, colorTexto = colorBotonTrue)
 
                 ButtonConFuncion(texto = "False", func = {
                     textoSolucion = MetodosCuest.getTextoSolucion(Preguntas.listaPreguntas[indicePreg].solucion, false)
+                    colorBotonFalse = MetodosCuest.getColorSolucion(Preguntas.listaPreguntas[indicePreg].solucion, false)
                     Respuestas.Respuestas[indicePreg] = -1
-
-                })
+                }, colorFondo = colorBotonFalse, colorTexto = colorBotonFalse)
             }
 
             BotonesNavegacion(funAnterior = {

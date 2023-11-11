@@ -31,6 +31,14 @@ class MetodosCuest {
             }
         }
 
+        fun getColorSolucion(Solucion: Boolean, opcionSeleccionada: Boolean): Color {
+            return if (Solucion == opcionSeleccionada) {
+                Color.Green
+            } else {
+                Color.Red
+            }
+        }
+
         fun getBooleanSolucion(Solucion: Boolean, opcionSeleccionada: Boolean): Boolean {
             return Solucion == opcionSeleccionada
         }
