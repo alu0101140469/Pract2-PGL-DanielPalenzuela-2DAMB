@@ -51,23 +51,23 @@ class MetodosCuest {
             val listaPreguntas = ArrayList<Pregunta>()
 
             val preg1 = Pregunta().apply {
-                textoPregunta = "1"
+                textoPregunta = "¿El aguacate es una fruta?"
                 solucion = true
             }
             val preg2 = Pregunta().apply {
-                textoPregunta = "2"
+                textoPregunta = "¿El tomate es una verdura?"
                 solucion = false
             }
             val preg3 = Pregunta().apply {
-                textoPregunta = "3"
+                textoPregunta = "¿El pepino es una verdura?"
                 solucion = false
             }
             val preg4 = Pregunta().apply {
-                textoPregunta = "4"
+                textoPregunta = "¿El pimiento es una fruta?"
                 solucion = true
             }
             val preg5 = Pregunta().apply {
-                textoPregunta = "5"
+                textoPregunta = "¿La calabaza es una verdura?"
                 solucion = false
             }
 
