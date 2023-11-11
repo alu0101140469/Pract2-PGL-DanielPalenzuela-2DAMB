@@ -36,6 +36,10 @@ fun MostrarPregunta(navController: NavHostController?) {
         mutableIntStateOf(0)
     }
 
+    var mostrarPreguntaRandom by remember {
+        mutableStateOf(false)
+    }
+
     var textoSolucion by remember {
         mutableStateOf("")
     }
@@ -52,7 +56,9 @@ fun MostrarPregunta(navController: NavHostController?) {
         mutableStateOf(Color.Gray)
     }
 
-    var botonPresionado by remember { mutableStateOf("") }
+    var botonPresionado by remember {
+        mutableStateOf("")
+    }
 
     LaunchedEffect(indicePreg) {
         val preguntaActual = Preguntas.listaPreguntas[indicePreg]
@@ -120,7 +126,15 @@ fun MostrarPregunta(navController: NavHostController?) {
                     indicePreg = Preguntas.listaPreguntas.size - 1
                 }
             }, funAleatoria = {
-
+                val randomIndice = (0 until Preguntas.listaPreguntas.size).random()
+                textoPregunta = Preguntas.listaPreguntas[randomIndice].textoPregunta
+                indicePreg = randomIndice
+                mostrarPreguntaRandom = true
+                textoSolucion = ""
+                colorBotonFalse = Color.Gray
+                colorBotonTrue = Color.Gray
+                botonPresionado = ""
+                Respuestas.Respuestas[indicePreg] = -1
             },
                 funSiguiente = {
                     if(indicePreg < Preguntas.listaPreguntas.size - 1) {
