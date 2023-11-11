@@ -94,7 +94,8 @@ class MetodosCuest {
             func: () -> Unit,
             colorFondo: Color = Color.Blue,
             colorTexto: Color = Color.Blue,
-            icono: ImageVector? = null) {
+            icono: ImageVector? = null,
+            iconoDcha: Boolean = false) {
             OutlinedButton(onClick = func,
                 border = BorderStroke(1.dp, colorFondo),
                 shape = RoundedCornerShape(50),
@@ -104,10 +105,16 @@ class MetodosCuest {
                     verticalAlignment = Alignment.CenterVertically,
                     horizontalArrangement = Arrangement.spacedBy(4.dp)
                 ) {
-                    if (icono != null) {
+                    if (icono != null && !iconoDcha) {
                         Icon(imageVector = icono, contentDescription = null, tint = colorTexto)
                     }
-                    Text(text = texto, color = colorTexto)
+                    Text(
+                        text = texto,
+                        color = colorTexto
+                    )
+                    if (icono != null && iconoDcha) {
+                        Icon(imageVector = icono, contentDescription = null, tint = colorTexto)
+                    }
                 }
             }
         }
@@ -122,7 +129,7 @@ class MetodosCuest {
                 horizontalArrangement = Arrangement.SpaceEvenly) {
                 ButtonConFuncion("Previous", funAnterior, icono = Icons.Default.ArrowBack)
                 ButtonConFuncion("Random", funAleatoria)
-                ButtonConFuncion("Next", funSiguiente, icono = Icons.Default.ArrowForward)
+                ButtonConFuncion("Next", funSiguiente, icono = Icons.Default.ArrowForward, iconoDcha = true)
             }
         }
     }
