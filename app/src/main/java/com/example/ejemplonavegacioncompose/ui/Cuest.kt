@@ -52,6 +52,8 @@ fun MostrarPregunta(navController: NavHostController?) {
         mutableStateOf(Color.Gray)
     }
 
+    var botonPresionado by remember { mutableStateOf("") }
+
     LaunchedEffect(indicePreg) {
         val preguntaActual = Preguntas.listaPreguntas[indicePreg]
         textoSolucion = ""
@@ -76,11 +78,9 @@ fun MostrarPregunta(navController: NavHostController?) {
 
         Text(
             text = textoSolucion,
-            color = when {
-                colorBotonTrue == Color.Green -> colorBotonTrue
-                colorBotonTrue == Color.Red -> colorBotonTrue
-                colorBotonFalse == Color.Red -> colorBotonFalse
-                colorBotonFalse == Color.Green -> colorBotonFalse
+            color = when (botonPresionado) {
+                "True" -> colorBotonTrue
+                "False" -> colorBotonFalse
                 else -> Color.Gray
             }
         )
@@ -96,6 +96,8 @@ fun MostrarPregunta(navController: NavHostController?) {
                     colorBotonTrue = MetodosCuest.getColorSolucion(Preguntas.listaPreguntas[indicePreg].solucion, true)
                     colorBotonFalse = MetodosCuest.getColorSolucion(Preguntas.listaPreguntas[indicePreg].solucion, false)
 
+                    botonPresionado = "True"
+
                     Respuestas.Respuestas[indicePreg] = -1
                 }, colorFondo = colorBotonTrue, colorTexto = colorBotonTrue)
 
@@ -104,6 +106,8 @@ fun MostrarPregunta(navController: NavHostController?) {
 
                     colorBotonFalse = MetodosCuest.getColorSolucion(Preguntas.listaPreguntas[indicePreg].solucion, false)
                     colorBotonTrue = MetodosCuest.getColorSolucion(Preguntas.listaPreguntas[indicePreg].solucion, true)
+
+                    botonPresionado = "False"
 
                     Respuestas.Respuestas[indicePreg] = -1
                 }, colorFondo = colorBotonFalse, colorTexto = colorBotonFalse)
